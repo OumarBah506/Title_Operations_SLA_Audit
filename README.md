@@ -7,6 +7,10 @@ An operational audit using Python, SQL, and Power BI to quantify mortgage fundin
 This project simulates a real-world operational audit of title insurance and mortgage funding files. As a Bilingual Title Officer, I identified internal bottlenecks that cause files to exceed a 21-day Service Level Agreement (SLA). When FCT misses this deadline due to internal backlogs, the company is often contractually responsible for covering the interest differential if the refinancing rate is lower than the actual rate; from the 22nd day until the funding date. In most cases, when a mortgage reaches its maturity and the mortgagee(s) decide 
 
 This repository tracks the operational and financial impact of these processing delays across Canada, specifically benchmarking external refinancing and Quebec's notary workflow against top-tier lenders.
+**Source:** Synthetically generated via'Scripts/Data_Generator.py' to model real-world FCT operations.
+**Volume:** 50,000 transactional records
+**Note on File Size:** Due to the scale of the audit, the raw CSV exceeds GitHub's web preview limits but is fully accessible for programmatic analysis via Python and Power BI.
+
 
 ---
 
