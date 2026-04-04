@@ -43,7 +43,7 @@ These insights can support process improvements, reduce financial leakage, and e
 ### Business Question
 Which lenders have the longest processing times?
 
-### -SQL Query:
+### SQL Query:
 
 ```sql
 SELECT 
@@ -56,7 +56,7 @@ ORDER BY Avg_Processing_Days DESC;
 **The Result:**
 ![Lender Average Processing Days](Visuals/lender_avg_days.png)
 
-### -Insight:
+### Insight:
 External lenders and non-priority partners tend to have longer processing times, indicating potential inefficiencies in coordination or payout timelines.
 
 
