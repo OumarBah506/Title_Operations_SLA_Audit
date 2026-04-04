@@ -57,7 +57,7 @@ ORDER BY Avg_Processing_Days DESC;
 **The Result:**
 ![lender average processing days](Visuals/lender_avg_days.png)
 
-**Insight**
+**Insight:**
 External lenders and non-priority partners tend to have longer processing times, indicating potential inefficiencies in coordination or payout timelines.
 
 ### 2. Internal vs External Refinance Performance
@@ -76,8 +76,9 @@ GROUP BY Refi_Type;
 **The Result:**
 ![Internal_vs_External_Avg_Days](Visuals/Internal_vs_External_Avg_Days.png)
 
-**Insight**  
+**Insight:**  
 External refinances take longer on average than internal ones due to reliance on external lenders for payout processing. This confirms that external workflows are a key driver of SLA delays.
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
