@@ -36,7 +36,7 @@ This repository tracks the operational and financial impact of these processing 
 Before auditing penalties, I established a performance baseline across all lending partners to identify systemic delays.
 
 **The Query:**
-'''sql
+```sql
 SELECT 
     Lender,
     ROUND(AVG(DATEDIFF(Date_Funded, Date_Received)),0) AS Avg_Processing_Days
