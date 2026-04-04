@@ -120,6 +120,9 @@ AND Delay_Reason = "Internal: Processing Backlog";
 ```
 ***The Result:**
 
+![internal_backlog_breaches](Visuals/internal_backlog_breaches.png)
+
+**Insight:**  
 
 ---
 
