@@ -40,6 +40,7 @@ These insights can support process improvements, reduce financial leakage, and e
 *I used SQL to perform deep-dive diagnostic querying on the raw 50,000-row dataset before building the final Power BI dashboard.*
 
 ### 1. Average Processing Days by Lender
+
 ### Business Question
 Which lenders have the longest processing times?
 
@@ -54,7 +55,7 @@ GROUP BY Lender
 ORDER BY Avg_Processing_Days DESC;
 ```
 **The Result:**
-![Lender Average Processing Days](Visuals/lender_avg_days.png)
+![lender average processing days](Visuals/lender_avg_days.png)
 
 ### Insight:
 External lenders and non-priority partners tend to have longer processing times, indicating potential inefficiencies in coordination or payout timelines.
