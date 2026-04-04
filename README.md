@@ -32,6 +32,7 @@ This repository tracks the operational and financial impact of these processing 
 
 ## 🔍 SQL Insights & Analysis
 *I used SQL to perform deep-dive diagnostic querying on the raw 50,000-row dataset before building the final Power BI dashboard.*
+
 ### 1. Benchmark: Average Processing Days by Lender
 Before auditing penalties, I established a performance baseline across all lending partners to identify systemic delays.
 
@@ -43,7 +44,11 @@ SELECT
 FROM fct_data
 GROUP BY Lender
 ORDER BY Avg_Processing_Days DESC;
-![Lender Average Processing Days] (Visuals/lender_avg_days.png)
+```
+![Lender Average Processing Days](Visuals/lender_avg_days.png)
+
+
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
