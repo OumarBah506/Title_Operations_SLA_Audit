@@ -30,6 +30,10 @@ This repository tracks the operational and financial impact of these processing 
 * **SQL:** Conducted localized querying to highlight extreme edge cases where missing lender files overlap with external payout delays. 
 * **Power BI & DAX:** Built dynamic visualizations on highly raw source data. I intentionally kept the Python output raw so I could calculate the true `NETWORKDAYS` (excluding weekends) and execute conditional `SUMX` iterator formulas directly in Power BI to track continuous penalty leakage.
 
+## 🔍 SQL Insights & Analysis
+*I used SQL to perform deep-dive diagnostic querying on the raw 50,000-row dataset before building the final Power BI dashboard.*
+
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
