@@ -43,7 +43,7 @@ These insights can support process improvements, reduce financial leakage, and e
 ### Business Question
 Which lenders have the longest processing times?
 
-### SQL Query
+* **SQL Query
 
 ```sql
 SELECT 
