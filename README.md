@@ -59,7 +59,21 @@ ORDER BY Avg_Processing_Days DESC;
 ### Insight:
 External lenders and non-priority partners tend to have longer processing times, indicating potential inefficiencies in coordination or payout timelines.
 
+### 2. Internal vs External Refinance Performance
+### Business question
+Do external refinances take longer than internal ones?
 
+### SQL Query:
+
+```sql
+SELECT 
+    Refi_Type,
+    AVG(DATEDIFF(Date_Funded, Date_Received)) AS Avg_Days
+FROM fct_data
+GROUP BY Refi_Type;
+```
+**The Result:**
+![Lender Average Processing Days](
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
