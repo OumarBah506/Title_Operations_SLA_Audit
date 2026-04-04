@@ -14,7 +14,7 @@ The objective is to highlight key drivers of delay, measure SLA breach exposure,
 ---
 
 ## 📊 Data Overview
-* **Source:** Synthetically generated via'Scripts/Data_Generator.py' to model real-world FCT operations.
+* **Source:** Synthetically generated via 'Scripts/Data_Generator.py' to model real-world FCT operations.
 * **Volume:** 50,000 transactional records
 * **Note on File Size:** Due to the scale of the audit, the raw CSV exceeds GitHub's web preview limits but is fully accessible for programmatic analysis via Python and Power BI.
 
@@ -22,9 +22,12 @@ The objective is to highlight key drivers of delay, measure SLA breach exposure,
 ---
 
 ## 💼 Business Impact & ROI
-* **Quantifying Financial Leakage:** Analyzed a transactional volume of 50,000 files to isolate specific instances where FCT absorbs penalty costs due to processing backlogs.
-* **Benchmarking Operational Excellence:** Discovered that Fairstone’s pre-scheduled notary appointment model reduces turnaround to 2-3 days, serving as a zero-penalty model for the company.
-* **Bilingual Resource Optimization:** Isolated high-frequency delay points in Quebec caused by missing lender instruction packages, providing data to justify automated early-triage routing.
+This analysis estimates the operational cost of SLA breaches by quantifying:
+- The number of files funded after maturity
+- The average delay beyond SLA thresholds
+- The potential exposure to interest differential payments
+
+These insights can support process improvements, reduce financial leakage, and enhance lender relationships.
 
 ---
 
