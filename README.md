@@ -73,7 +73,8 @@ FROM fct_data
 GROUP BY Refi_Type;
 ```
 **The Result:**
-![Lender Average Processing Days](
+![Lender Average Processing Days](Internal_vs_External_Avg_Days.png)
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
