@@ -103,6 +103,24 @@ WHERE Date_Funded > Maturity_Date;
 **Insight:**  
 A measurable percentage of files are funded after maturity, exposing the company to financial penalties and reputational risk.
 
+### 4. Internal Backlog Breaches
+
+### Business Question
+How many files are funded after maturity due to internal backlog?
+
+### SQL Query
+
+```sql
+SELECT 
+    COUNT(*) AS Late_Files,
+    ROUND(COUNT(*) * 100 / (SELECT COUNT(*) FROM fct_data), 2) AS Percentage
+FROM fct_data
+WHERE Date_Funded > Maturity_Date
+AND Delay_Reason = "Internal: Processing Backlog";
+```
+***The Result:**
+
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
