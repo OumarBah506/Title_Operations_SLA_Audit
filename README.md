@@ -43,7 +43,7 @@ SELECT
 FROM fct_data
 GROUP BY Lender
 ORDER BY Avg_Processing_Days DESC;
-
+![Lender Average Processing Days] (Visuals/lender_avg_days.png)
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
