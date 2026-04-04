@@ -58,7 +58,7 @@ ORDER BY Avg_Processing_Days DESC;
 ![lender average processing days](Visuals/lender_avg_days.png)
 
 **Insight:**
-External lenders and non-priority partners tend to have longer processing times, indicating potential inefficiencies in coordination or payout timelines.
+Processing times are relatively consistent across most lenders, averaging around 17 days. Fairstone is a clear outlier, with significantly faster funding timelines (~3 days), likely due to pre-scheduled or streamlined processes.
 
 ### 2. Internal vs External Refinance Performance
 ### Business question
