@@ -45,6 +45,7 @@ FROM fct_data
 GROUP BY Lender
 ORDER BY Avg_Processing_Days DESC;
 ```
+**The Result:**
 ![Lender Average Processing Days](Visuals/lender_avg_days.png)
 
 
