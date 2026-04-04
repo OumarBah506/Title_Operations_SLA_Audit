@@ -55,6 +55,7 @@ GROUP BY Lender
 ORDER BY Avg_Processing_Days DESC;
 ```
 **The Result:**
+
 ![lender average processing days](Visuals/lender_avg_days.png)
 
 **Insight:**  
@@ -75,6 +76,7 @@ FROM fct_data
 GROUP BY Refi_Type;
 ```
 **The Result:**
+
 ![Internal_vs_External_Avg_Days](Visuals/Internal_vs_External_Avg_Days.png)
 
 **Insight:**  
@@ -95,6 +97,11 @@ FROM fct_data
 WHERE Date_Funded > Maturity_Date;
 ```
 **The Result:**
+
+![sla_breaches](Visuals/sla_breaches.png)
+
+**Insight:**  
+A measurable percentage of files are funded after maturity, exposing the company to financial penalties and reputational risk.
 
 ---
 
