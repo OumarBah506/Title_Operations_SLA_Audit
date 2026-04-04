@@ -39,10 +39,12 @@ These insights can support process improvements, reduce financial leakage, and e
 ## 🔍 SQL Insights & Analysis
 *I used SQL to perform deep-dive diagnostic querying on the raw 50,000-row dataset before building the final Power BI dashboard.*
 
-### 1. Benchmark: Average Processing Days by Lender
-Before auditing penalties, I established a performance baseline across all lending partners to identify systemic delays.
+### 1. Average Processing Days by Lender
+### Business Question
+Which lenders have the longest processing times?
 
-**The Query:**
+### SQL Query
+
 ```sql
 SELECT 
     Lender,
