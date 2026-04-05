@@ -58,7 +58,7 @@ ORDER BY Avg_Processing_Days DESC;
 
 ![lender average processing days](Visuals/lender_avg_days.png)
 
-**Insight:**  
+## Insight
 Processing times are relatively consistent across most lenders, averaging around 17 days. Fairstone is a clear outlier, with significantly faster funding timelines (~3 days), likely due to pre-scheduled or streamlined processes.
 
 ### 2. Internal vs External Refinance Performance
@@ -79,7 +79,7 @@ GROUP BY Refi_Type;
 
 ![internal_vs_external_avg_days](Visuals/internal_vs_external_avg_days.png)
 
-**Insight:**  
+## Insight
 External refinances take longer on average than internal ones due to reliance on external lenders for payout processing. This confirms that external workflows are a key driver of SLA delays.
 
 ### 3. SLA Breaches (Late Funding)
@@ -100,7 +100,7 @@ WHERE Date_Funded > Maturity_Date;
 
 ![sla_breaches](Visuals/sla_breaches.png)
 
-**Insight:**  
+## Insight
 A measurable percentage of files are funded after maturity, exposing the company to financial penalties and reputational risk.
 
 ### 4. Internal Backlog Breaches
@@ -122,7 +122,7 @@ AND Delay_Reason = "Internal: Processing Backlog";
 
 ![internal_backlog_breaches](Visuals/internal_backlog_breaches.png)
 
-**Insight:**  
+## Insight
 
 ### Delay Drivers
 
@@ -147,7 +147,10 @@ WHERE Delay_Reason NOT IN("None", "None (Pre-scheduled)");
 
 **The Result:**
 
+![delay_drivers](Visuals/delay_drivers.png)
 
+### Insight
+External payout delays and missing documents from the lender are the primary contributors to extended funding timelines.
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
