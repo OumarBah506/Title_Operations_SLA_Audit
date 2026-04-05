@@ -149,8 +149,8 @@ WHERE Delay_Reason NOT IN("None", "None (Pre-scheduled)");
 
 ![delay_drivers](Visuals/delay_drivers.png)
 
-### Insight
-External payout delays and missing documents from the lender are the primary contributors to extended funding timelines.
+## Insight
+External payout delays and missing documents from the lender are the primary contributors to extended funding timelines. Most of the time when a file is received, there's a document missing from the lender. Some external lenders will only send the payout statement 1 to 2 days prior the maturity date, and the notary will only schedule the appointment after they receive the payout statement.
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
