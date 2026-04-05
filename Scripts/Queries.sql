@@ -1,5 +1,5 @@
 -- ==============================================================================
 -- PROJECT: Title Operations SLA Audit
 -- AUTHOR: Alpha Oumar II Bah
--- PURPOSE: Diagnostic queries to identify ALS breaches and interest penalty risk
+-- PURPOSE: Diagnostic queries to identify SLA breaches and interest penalty risk
 -- ==============================================================================
