@@ -138,7 +138,7 @@ FROM
 SELECT 
     Delay_Reason,
     COUNT(*) AS Total_Files,
-    AVG(DATEDIFF(Date_Funded, Date_Received))AS Avg_Delays
+    ROUND(AVG(DATEDIFF(Date_Funded, Date_Received)),0) AS Avg_Delays
 FROM fct_data
 GROUP BY Delay_Reason
 ORDER BY Total_Files DESC)t
