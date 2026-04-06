@@ -180,7 +180,7 @@ ORDER BY Total_Penalty_Paid;
 ```
 **The Result:**
 
-
+![financial_impact_of_sla_breaches](Visuals/financial_impact_of_sla_breaches.png)
 
 ## Insight  
 A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
