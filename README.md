@@ -152,6 +152,40 @@ WHERE Delay_Reason NOT IN("None", "None (Pre-scheduled)");
 ## Insight
 External payout delays and missing documents from the lender are the primary contributors to extended funding timelines. Most of the time when a file is received, there's a document missing from the lender. Some external lenders will only send the payout statement 1 to 2 days prior the maturity date, and the notary will only schedule the appointment after they receive the payout statement.
 
+### 6. Financial Impact of SLA Breaches
+
+**Business Question**  
+How much financial exposure is caused by internal processing delays beyond the 21-day SLA?
+
+**SQL Query**
+```sql
+SELECT
+    COALESCE(Lender, 'TOTAL') AS Lender,
+    COUNT(File_ID) AS Total_Files,
+    SUM(CASE 
+            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
+                 AND Delay_Reason = 'Internal: Processing Backlog'
+            THEN 1
+            ELSE 0
+        END) AS Penalty_Files,
+    ROUND(SUM(CASE 
+            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
+                 AND Delay_Reason = 'Internal: Processing Backlog'
+            THEN (Disbursement * 0.02 / 365) * (DATEDIFF(Date_Funded, Date_Received) - 21)
+            ELSE 0
+        END), 2) AS Total_Penalty_Paid
+FROM fct_data
+GROUP BY Lender WITH ROLLUP
+ORDER BY Total_Penalty_Paid;
+```
+**The Result:**
+
+
+
+## Insight  
+A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
+This highlights how operational inefficiencies directly translate into monetary loss, particularly on high-disbursement files.
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
