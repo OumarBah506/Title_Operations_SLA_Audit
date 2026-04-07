@@ -188,11 +188,47 @@ ORDER BY Total_Penalty_Paid;
 A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
 This highlights how operational inefficiencies directly translate into monetary loss, particularly on high-disbursement files.
 
-**Business Question:**
+### 7. Risk Ranky by Legal Professional
+
+**Business Question:**  
 Which legal professionals (notaries/lawyers) are associated with the highest financial risk from SLA breaches?
 
 **SQL Query:**
+```sql
+SELECT
+    Professional,
+    COUNT(*) AS Total_Files,
+    SUM(CASE 
+            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
+                 AND Delay_Reason = 'Internal: Processing Backlog'
+            THEN 1 
+            ELSE 0 
+        END) AS Penalty_Files,
+    ROUND(SUM(CASE 
+            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
+                 AND Delay_Reason = 'Internal: Processing Backlog'
+            THEN (Disbursement * 0.02 / 365) * (DATEDIFF(Date_Funded, Date_Received) - 21)
+            ELSE 0 
+        END), 2) AS Total_Penalty_Paid,
+    
+    RANK() OVER (
+        ORDER BY SUM(CASE 
+            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
+                 AND Delay_Reason = 'Internal: Processing Backlog'
+            THEN (Disbursement * 0.02 / 365) * (DATEDIFF(Date_Funded, Date_Received) - 21)
+            ELSE 0 
+        END) DESC
+    ) AS Risk_Rank
 
+FROM fct_data
+GROUP BY Professional;
+```
+**The Result:**
+
+![legal_professionals_risk_ranking](Visuals/legal_professional_risk_ranking.png)
+
+**Insight:**  
+Certain legal professionals are consistently associated with higher penalty exposure, indicating potential inefficiencies in document handling or coordination. Ranking professionals by financial impact allows the business to identify high-risk partners and prioritize process improvements or escalation strategies.
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
