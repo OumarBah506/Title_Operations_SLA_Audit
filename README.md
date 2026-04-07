@@ -41,7 +41,7 @@ These insights can support process improvements, reduce financial leakage, and e
 
 ### 1. Average Processing Days by Lender
 
-**Business Question**
+**Business Question:**
 Which lenders have the longest processing times?
 
 **SQL Query:**
@@ -63,7 +63,7 @@ Processing times are relatively consistent across most lenders, averaging around
 
 ### 2. Internal vs External Refinance Performance
 
-### Business question
+**Business Question:**
 Do external refinances take longer than internal ones?
 
 ### SQL Query:
@@ -84,7 +84,7 @@ External refinances take longer on average than internal ones due to reliance on
 
 ### 3. SLA Breaches (Late Funding)
 
-### Business Question
+**Business Question:**
 How many files are funded after maturity (SLA breach)?
 
 ### SQL Query
@@ -105,7 +105,7 @@ A measurable percentage of files are funded after maturity, exposing the company
 
 ### 4. Internal Backlog Breaches
 
-### Business Question
+**Business Question:**
 How many files are funded after maturity due to internal backlog?
 
 ### SQL Query
@@ -126,7 +126,7 @@ AND Delay_Reason = "Internal: Processing Backlog";
 
 ### 5. Delay Drivers
 
-### Business Question
+**Business Question:**
 What are the main drivers of funding delays?
 
 ### SQL Query
@@ -186,7 +186,7 @@ ORDER BY Total_Penalty_Paid;
 A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
 This highlights how operational inefficiencies directly translate into monetary loss, particularly on high-disbursement files.
 
-## Business Question 
+**Business Question:**
 Which legal professionals (notaries/lawyers) are associated with the highest financial risk from SLA breaches?
 
 **SQL Query**
