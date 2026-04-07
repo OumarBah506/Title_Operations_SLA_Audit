@@ -79,7 +79,7 @@ GROUP BY Refi_Type;
 
 ![internal_vs_external_avg_days](Visuals/internal_vs_external_avg_days.png)
 
-## Insight
+**Insight:**
 External refinances take longer on average than internal ones due to reliance on external lenders for payout processing. This confirms that external workflows are a key driver of SLA delays.
 
 ### 3. SLA Breaches (Late Funding)
