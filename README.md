@@ -68,7 +68,7 @@ Processing times are relatively consistent across most lenders, averaging around
 **Business Question:**
 Do external refinances take longer than internal ones?
 
-### SQL Query:
+**SQL Query:**
 
 ```sql
 SELECT 
@@ -89,7 +89,7 @@ External refinances take longer on average than internal ones due to reliance on
 **Business Question:**
 How many files are funded after maturity (SLA breach)?
 
-### SQL Query
+**SQL Query:**
 
 ```sql
 SELECT 
@@ -110,7 +110,7 @@ A measurable percentage of files are funded after maturity, exposing the company
 **Business Question:**
 How many files are funded after maturity due to internal backlog?
 
-### SQL Query
+**SQL Query:**
 
 ```sql
 SELECT 
@@ -131,7 +131,7 @@ AND Delay_Reason = "Internal: Processing Backlog";
 **Business Question:**
 What are the main drivers of funding delays?
 
-### SQL Query
+**SQL Query:**
 
 ```sql
 SELECT*
@@ -159,7 +159,7 @@ External payout delays and missing documents from the lender are the primary con
 **Business Question**  
 How much financial exposure is caused by internal processing delays beyond the 21-day SLA?
 
-**SQL Query**
+**SQL Query:**
 ```sql
 SELECT
     COALESCE(Lender, 'TOTAL') AS Lender,
@@ -191,7 +191,7 @@ This highlights how operational inefficiencies directly translate into monetary 
 **Business Question:**
 Which legal professionals (notaries/lawyers) are associated with the highest financial risk from SLA breaches?
 
-**SQL Query**
+**SQL Query:**
 
 ---
 
