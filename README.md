@@ -186,6 +186,11 @@ ORDER BY Total_Penalty_Paid;
 A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
 This highlights how operational inefficiencies directly translate into monetary loss, particularly on high-disbursement files.
 
+## Business Question 
+Which legal professionals (notaries/lawyers) are associated with the highest financial risk from SLA breaches?
+
+**SQL Query**
+
 ---
 
 ## 📊 Key Measures & Formulas (DAX)
