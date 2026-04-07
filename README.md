@@ -81,7 +81,7 @@ GROUP BY Refi_Type;
 
 ![internal_vs_external_avg_days](Visuals/internal_vs_external_avg_days.png)
 
-**Insight:**
+**Insight:**  
 External refinances take longer on average than internal ones due to reliance on external lenders for payout processing. This confirms that external workflows are a key driver of SLA delays.
 
 ### 3. SLA Breaches (Late Funding)
@@ -102,7 +102,7 @@ WHERE Date_Funded > Maturity_Date;
 
 ![sla_breaches](Visuals/sla_breaches.png)
 
-## Insight
+**Insight:**  
 A measurable percentage of files are funded after maturity, exposing the company to financial penalties and reputational risk.
 
 ### 4. Internal Backlog Breaches
@@ -124,7 +124,7 @@ AND Delay_Reason = "Internal: Processing Backlog";
 
 ![internal_backlog_breaches](Visuals/internal_backlog_breaches.png)
 
-## Insight
+**Insight:**  
 
 ### 5. Delay Drivers
 
@@ -151,7 +151,7 @@ WHERE Delay_Reason NOT IN("None", "None (Pre-scheduled)");
 
 ![delay_drivers](Visuals/delay_drivers.png)
 
-## Insight
+**Insight:**  
 External payout delays and missing documents from the lender are the primary contributors to extended funding timelines. Most of the time when a file is received, there's a document missing from the lender. Some external lenders will only send the payout statement 1 to 2 days prior the maturity date, and the notary will only schedule the appointment after they receive the payout statement.
 
 ### 6. Financial Impact of SLA Breaches
@@ -184,7 +184,7 @@ ORDER BY Total_Penalty_Paid;
 
 ![financial_impact_of_sla_breaches](Visuals/financial_impact_of_sla_breaches.png)
 
-## Insight  
+**Insight:**  
 A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
 This highlights how operational inefficiencies directly translate into monetary loss, particularly on high-disbursement files.
 
