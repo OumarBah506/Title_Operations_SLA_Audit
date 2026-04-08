@@ -225,7 +225,7 @@ GROUP BY Professional;
 ```
 **The Result:**
 
-![legal_professionals_risk_ranking](Visuals/legal_professional_risk_ranking.png)
+![legal_professionals_risk_ranking](Visuals/legal_professionals_risk_ranking.png)
 
 **Insight:**  
 Certain legal professionals are consistently associated with higher penalty exposure, indicating potential inefficiencies in document handling or coordination. Ranking professionals by financial impact allows the business to identify high-risk partners and prioritize process improvements or escalation strategies.
