@@ -105,28 +105,7 @@ WHERE Date_Funded > Maturity_Date;
 **Insight:**  
 A measurable percentage of files are funded after maturity, exposing the company to financial penalties and reputational risk.
 
-### 4. Internal Backlog Breaches
-
-**Business Question:**
-How many files are funded after maturity due to internal backlog?
-
-**SQL Query:**
-
-```sql
-SELECT 
-    COUNT(*) AS Late_Files,
-    ROUND(COUNT(*) * 100 / (SELECT COUNT(*) FROM fct_data), 2) AS Percentage
-FROM fct_data
-WHERE Date_Funded > Maturity_Date
-AND Delay_Reason = "Internal: Processing Backlog";
-```
-***The Result:**
-
-![internal_backlog_breaches](Visuals/internal_backlog_breaches.png)
-
-**Insight:**  
-
-### 5. Delay Drivers
+### 4. Delay Drivers
 
 **Business Question:**
 What are the main drivers of funding delays?
@@ -140,7 +119,8 @@ FROM
 SELECT 
     Delay_Reason,
     COUNT(*) AS Total_Files,
-    ROUND(AVG(DATEDIFF(Date_Funded, Date_Received)),0) AS Avg_Delays
+    ROUND(AVG(DATEDIFF(Date_Funded, Date_Received)),0) AS Avg_Delays,
+    ROUND(COUNT(*) * 100 / (SELECT COUNT(*) FROM fct_data), 2) AS Percentage
 FROM fct_data
 GROUP BY Delay_Reason
 ORDER BY Total_Files DESC)t
@@ -154,7 +134,7 @@ WHERE Delay_Reason NOT IN("None", "None (Pre-scheduled)");
 **Insight:**  
 External payout delays and missing documents from the lender are the primary contributors to extended funding timelines. Most of the time when a file is received, there's a document missing from the lender. Some external lenders will only send the payout statement 1 to 2 days prior the maturity date, and the notary will only schedule the appointment after they receive the payout statement.
 
-### 6. Financial Impact of SLA Breaches
+### 5. Financial Impact of SLA Breaches
 
 **Business Question**  
 How much financial exposure is caused by internal processing delays beyond the 21-day SLA?
@@ -188,7 +168,7 @@ ORDER BY Total_Penalty_Paid;
 A portion of SLA breaches driven by internal processing delays results in financial exposure through interest differential payments. The total row highlights the overall cost impact, while lender-level breakdowns help identify where operational inefficiencies translate into financial loss.
 This highlights how operational inefficiencies directly translate into monetary loss, particularly on high-disbursement files.
 
-### 7. Risk Ranky by Legal Professional
+### 6. Risk Ranky by Legal Professional
 
 **Business Question:**  
 Which legal professionals (notaries/lawyers) are associated with the highest financial risk from SLA breaches?
