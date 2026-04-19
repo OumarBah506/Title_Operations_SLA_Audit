@@ -41,6 +41,50 @@ These insights can support process improvements, reduce financial leakage, and e
 ## 🔍 SQL Insights & Analysis
 *I used SQL to perform deep-dive diagnostic querying on the raw 50,000-row dataset before building the final Power BI dashboard.*
 
+### 📅 Calendar Table (Business Day Calculation)
+
+**Purpose**  
+A dedicated calendar table is used to accurately calculate business days between two dates. This approach avoids approximations and enables precise SLA tracking by excluding weekends and supporting future integration of statutory holidays.
+
+**Table Structure:**
+```sql
+
+CREATE TABLE calendar (
+    calendar_date DATE PRIMARY KEY,
+    is_weekend BOOLEAN,
+    is_business_day BOOLEAN
+);
+```
+
+**Population Logic:**
+```sql
+INSERT INTO calendar (calendar_date, is_weekend, is_business_day)
+SELECT 
+    date_series,
+    CASE 
+        WHEN DAYOFWEEK(date_series) IN (1,7) THEN 1 ELSE 0 
+    END AS is_weekend,
+    CASE 
+        WHEN DAYOFWEEK(date_series) IN (1,7) THEN 0 ELSE 1 
+    END AS is_business_day
+FROM (
+    SELECT DATE('2025-01-01') + INTERVAL n DAY AS date_series
+    FROM (
+        SELECT a.N + b.N * 10 + c.N * 100 AS n
+        FROM 
+        (SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+         UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) a,
+        (SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+         UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) b,
+        (SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+         UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) c
+    ) numbers
+    WHERE DATE('2025-01-01') + INTERVAL n DAY <= '2026-12-31'
+) dates;
+```
+**Business Impact:**  
+This approach ensures that SLA calculations are based on true business days rather than calendar days, improving accuracy in measuring operational performance and financial exposure.
+
 ### 1. Average Processing Days by Lender
 
 **Business Question:**
