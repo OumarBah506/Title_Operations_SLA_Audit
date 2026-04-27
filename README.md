@@ -95,10 +95,20 @@ Which lenders have the longest processing times?
 ```sql
 SELECT 
     Lender,
-    ROUND(AVG(DATEDIFF(Date_Funded, Date_Received)),0) AS Avg_Processing_Days
-FROM fct_data
+    ROUND(AVG(business_days), 0) AS Avg_Business_Days
+FROM (
+    SELECT 
+        f.File_ID,
+        f.Lender,
+        COUNT(c.calendar_date) AS business_days
+    FROM fct_operations f
+    JOIN calendar c 
+        ON c.calendar_date BETWEEN f.Date_Received AND f.Date_Funded
+        AND c.is_business_day = 1
+    GROUP BY f.File_ID, f.Lender
+) t
 GROUP BY Lender
-ORDER BY Avg_Processing_Days DESC;
+ORDER BY Avg_Business_Days DESC;
 ```
 **The Result:**
 
