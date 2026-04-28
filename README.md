@@ -115,7 +115,7 @@ ORDER BY Avg_Business_Days DESC;
 ![lender average processing days](Visuals/lender_avg_days.png)
 
 **Insight:**  
-Processing times are relatively consistent across most lenders, averaging around 17 days. Fairstone is a clear outlier, with significantly faster funding timelines (~3 days), likely due to pre-scheduled or streamlined processes.
+Processing times vary across lenders, with NBC and BMO showing the highest average durations (~20 business days), while ScotiaBank demonstrates the fastest processing (~16 days). This variation suggests that lender-specific workflows and coordination efficiency play a role in overall processing timelines..
 
 ### 2. Internal vs External Refinance Performance
 
