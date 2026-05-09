@@ -195,23 +195,35 @@ How much financial exposure is caused by internal processing delays beyond the 2
 
 **SQL Query:**
 ```sql
-SELECT
-    COALESCE(Lender, 'TOTAL') AS Lender,
-    COUNT(File_ID) AS Total_Files,
+SELECT 
+    COALESCE(t.Lender, "TOTAL:") AS Lender,
+    COUNT(*) AS Total_Files,
+
     SUM(CASE 
-            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
-                 AND Delay_Reason = 'Internal: Processing Backlog'
-            THEN 1
-            ELSE 0
-        END) AS Penalty_Files,
+        WHEN Business_Days > 21 
+             AND t.Delay_Reason = 'Internal: Processing Backlog'
+        THEN 1 ELSE 0 
+    END) AS Penalty_Files,
+
     ROUND(SUM(CASE 
-            WHEN DATEDIFF(Date_Funded, Date_Received) > 21
-                 AND Delay_Reason = 'Internal: Processing Backlog'
-            THEN (Disbursement * 0.02 / 365) * (DATEDIFF(Date_Funded, Date_Received) - 21)
-            ELSE 0
-        END), 2) AS Total_Penalty_Paid
-FROM fct_data
-GROUP BY Lender WITH ROLLUP
+        WHEN Business_Days > 21 
+             AND t.Delay_Reason = 'Internal: Processing Backlog'
+        THEN (t.Disbursement * 0.02 / 365) * (Business_Days - 21)
+        ELSE 0 
+    END), 2) AS Total_Penalty_Paid
+
+FROM (
+    SELECT 
+        f.File_ID, f.Lender, f.Delay_Reason, f.Disbursement,
+        COUNT(c.calendar_date) AS Business_Days
+    FROM fct_operations f
+    JOIN calendar c 
+        ON c.calendar_date BETWEEN f.Date_Received AND f.Date_Funded
+        AND c.is_business_day = 1
+    GROUP BY f.File_ID, f.Lender, f.Delay_Reason, f.Disbursement
+) t
+
+GROUP BY t.Lender WITH ROLLUP
 ORDER BY Total_Penalty_Paid;
 ```
 **The Result:**
