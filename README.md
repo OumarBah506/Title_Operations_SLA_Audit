@@ -146,11 +146,20 @@ How many files are funded after maturity (SLA breach)?
 **SQL Query:**
 
 ```sql
-SELECT 
-    COUNT(*) AS Late_Files,
-    ROUND(COUNT(*) * 100 / (SELECT COUNT(*) FROM fct_data), 2) AS Percentage
-FROM fct_data
-WHERE Date_Funded > Maturity_Date;
+SELECT
+    COUNT(*) AS Total_Files,
+    SUM(CASE WHEN Business_Days > 21 THEN 1 ELSE 0 END) AS Total_Breaches,
+    ROUND(SUM(CASE WHEN Business_Days > 21 THEN 1 ELSE 0 END)* 100.0 / COUNT(*), 2) AS Breach_Percentage
+FROM (
+    SELECT
+        f.File_ID,
+        COUNT(c.calendar_date) AS Business_Days
+    FROM fct_operations f
+    JOIN calendar c
+        ON c.calendar_date BETWEEN f.Date_Received AND f.Date_Funded
+        AND c.is_business_day = 1
+    GROUP BY f.File_ID
+) t;
 ```
 **The Result:**
 
