@@ -163,7 +163,7 @@ FROM (
 ```
 **The Result:**
 
-
+![sla_breaches](Visuals/sla_breaches.png)
 
 **Insight:**  
 Approximately 20% of files exceeded the 21-business-day SLA, indicating that while the majority of files are processed within the required timeframe, a meaningful portion remains at risk of operational delays and potential financial penalties.
