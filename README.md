@@ -167,18 +167,30 @@ What are the main drivers of funding delays?
 **SQL Query:**
 
 ```sql
-SELECT*
-FROM
-(
-SELECT 
-    Delay_Reason,
+SELECT
+    t.Delay_Reason,
     COUNT(*) AS Total_Files,
-    ROUND(AVG(DATEDIFF(Date_Funded, Date_Received)),0) AS Avg_Delays,
-    ROUND(COUNT(*) * 100 / (SELECT COUNT(*) FROM fct_data), 2) AS Percentage
-FROM fct_data
-GROUP BY Delay_Reason
-ORDER BY Total_Files DESC)t
-WHERE Delay_Reason NOT IN("None", "None (Pre-scheduled)");
+    ROUND(AVG(t.Business_Days), 1) AS Avg_Business_Days,
+    ROUND(COUNT(*) * 100.0 / (
+        SELECT COUNT(*)
+        FROM fct_data
+    ), 2) AS Percentage_of_All_Files
+FROM (
+    SELECT
+        f.File_ID,
+        f.Delay_Reason,
+        COUNT(c.calendar_date) AS Business_Days
+    FROM fct_data f
+    JOIN calendar c
+        ON c.calendar_date BETWEEN f.Date_Received AND f.Date_Funded
+        AND c.is_business_day = 1
+    GROUP BY
+        f.File_ID,
+        f.Delay_Reason
+) t
+WHERE t.Business_Days > 21
+GROUP BY t.Delay_Reason
+ORDER BY Total_Files DESC
 ```
 
 **The Result:**
