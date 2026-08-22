@@ -166,7 +166,7 @@ FROM (
 ![sla_breaches](Visuals/sla_breaches.png)
 
 **Insight:**  
-A measurable percentage of files are funded after maturity, exposing the company to financial penalties and reputational risk.
+Approximately 20% of files exceeded the 21-business-day SLA, indicating that while the majority of files are processed within the required timeframe, a meaningful portion remains at risk of operational delays and potential financial penalties.
 
 ### 4. Delay Drivers
 
