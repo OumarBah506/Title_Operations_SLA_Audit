@@ -161,14 +161,14 @@ SELECT
     ROUND(AVG(t.Business_Days), 1) AS Avg_Business_Days,
     ROUND(COUNT(*) * 100.0 / (
         SELECT COUNT(*)
-        FROM fct_data
+        FROM fct_operations
     ), 2) AS Percentage_of_All_Files
 FROM (
     SELECT
         f.File_ID,
         f.Delay_Reason,
         COUNT(c.calendar_date) AS Business_Days
-    FROM fct_data f
+    FROM fct_operations f
     JOIN calendar c
         ON c.calendar_date BETWEEN f.Date_Received AND f.Date_Funded
         AND c.is_business_day = 1
@@ -178,7 +178,7 @@ FROM (
 ) t
 WHERE t.Business_Days > 21
 GROUP BY t.Delay_Reason
-ORDER BY Total_Files DESC
+ORDER BY Total_Files DESC;
 ```
 
 **The Result:**
