@@ -266,7 +266,7 @@ SELECT
         END) DESC
     ) AS Risk_Rank
 
-FROM fct_data
+FROM fct_operations
 GROUP BY Professional;
 ```
 **The Result:**
